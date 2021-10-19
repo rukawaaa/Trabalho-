@@ -1,36 +1,38 @@
+getwd()
+setwd("C:/Users/rapha/Desktop/UnB/CE1")
 library(tidyverse)
 library(ggplot2)
 library(vcd)
 library(grid)
 library(read.dbc)
 set.seed(1234)
+dados <- bind_rows(AC = read.dbc(file = "DNAC2017.dbc"),
+                   AL = read.dbc(file = "DNAL2017.dbc"),
+                   AP = read.dbc(file = "DNAP2017.dbc"),
+                   AM = read.dbc(file = "DNAM2017.dbc"),
+                   BA = read.dbc(file = "DNBA2017.dbc"),
+                   CE = read.dbc(file = "DNCE2017.dbc"),
+                   DF = read.dbc(file = "DNDF2017.dbc"),
+                   ES = read.dbc(file = "DNES2017.dbc"),
+                   GO = read.dbc(file = "DNGO2017.dbc"),
+                   MA = read.dbc(file = "DNMA2017.dbc"),
+                   MT = read.dbc(file = "DNMT2017.dbc"),
+                   MS = read.dbc(file = "DNMS2017.dbc"),
+                   MG = read.dbc(file = "DNMG2017.dbc"),
+                   PA = read.dbc(file = "DNPA2017.dbc"),
+                   PB = read.dbc(file = "DNPB2017.dbc"),
+                   PR = read.dbc(file = "DNPR2017.dbc"),
+                   PE = read.dbc(file = "DNPE2017.dbc"),
+                   PI = read.dbc(file = "DNPI2017.dbc"),
+                   RJ = read.dbc(file = "DNRJ2017.dbc"),
+                   RN = read.dbc(file = "DNRN2017.dbc"),
+                   RS = read.dbc(file = "DNRS2017.dbc"),
+                   RO = read.dbc(file = "DNRO2017.dbc"),
+                   RR = read.dbc(file = "DNRR2017.dbc"),
+                   SC = read.dbc(file = "DNSC2017.dbc"),
+                   SP = read.dbc(file = "DNSP2017.dbc"),
+                   SE = read.dbc(file = "DNSE2017.dbc"),
+                   TO = read.dbc(file = "DNTO2017.dbc"),
+                   id= "UF")
 
-AC = read.dbc(file = "DNAC2017.dbc")
-AL = read.dbc(file = "DNAL2017.dbc")
-AP = read.dbc(file = "DNAP2017.dbc")
-AM = read.dbc(file = "DNAM2017.dbc")
-BA = read.dbc(file = "DNBA2017.dbc")
-CE = read.dbc(file = "DNCE2017.dbc")
-DF = read.dbc(file = "DNDF2017.dbc")
-ES = read.dbc(file = "DNES2017.dbc")
-GO = read.dbc(file = "DNGO2017.dbc")
-MA = read.dbc(file = "DNMA2017.dbc")
-MT = read.dbc(file = "DNMT2017.dbc")
-MS = read.dbc(file = "DNMS2017.dbc")
-MG = read.dbc(file = "DNMG2017.dbc")
-PA = read.dbc(file = "DNPA2017.dbc")
-PB = read.dbc(file = "DNPB2017.dbc")
-PR = read.dbc(file = "DNPR2017.dbc")
-PE = read.dbc(file = "DNPE2017.dbc")
-PI = read.dbc(file = "DNPI2017.dbc")
-RJ = read.dbc(file = "DNRJ2017.dbc")
-RN = read.dbc(file = "DNRN2017.dbc")
-RS = read.dbc(file = "DNRS2017.dbc")
-RO = read.dbc(file = "DNRO2017.dbc")
-RR = read.dbc(file = "DNRR2017.dbc")
-SC = read.dbc(file = "DNSC2017.dbc")
-SP = read.dbc(file = "DNSP2017.dbc")
-SE = read.dbc(file = "DNSE2017.dbc")
-TO = read.dbc(file = "DNTO2017.dbc")
-
-lista1 <- list(AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO)
+naschosp <- filter(dados, LOCNASC == 1)
